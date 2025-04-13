@@ -118,12 +118,8 @@ h2 {
     margin-bottom: 20px;
     font-size: 2rem;
     border-left: 4px solid var(--accent-color);
-    padding-left: 12px; /* previously 12px */
+    padding-left: 2rem; /* previously 12px */
     
-}
-.h2-indent {
-    display: inline-block;
-    padding-left: 2rem; /* Adjust to your liking */
 }
 
 /* Typography */
@@ -255,22 +251,64 @@ button:hover {
     box-shadow: 0 4px 12px var(--shadow);
 }
 
-/* Responsive fallback */
-@media (max-width: 768px) {
-    .home {
-        flex-direction: column;
-        text-align: center;
-    }
+/* Experience Section */
+#experience {
+    padding: 60px 10vw;
+    background-color: var(--section-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+    scroll-snap-align: start;
+}
 
-    .home-text, .home-photo {
-        max-width: 100%;
-    }
+/* Flexbox Container for Each Experience */
+.experience-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
 
-    .home-photo img {
-        margin-top: 20px;
-        width: 200px;
-        height: 200px;
-    }
+.experience-text {
+    flex: 1;
+    max-width: 50%;
+}
+
+.experience-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.company-logo {
+    max-width: 300px; /* Adjust size */
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Alternating Layout */
+.experience-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.experience-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.experience-item:nth-child(even) .experience-text {
+    text-align: right;
+}
+
+/* Hamburger button (hidden by default) */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
 }
 /* ... Keep everything before here exactly as-is ... */
 
@@ -297,6 +335,24 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+
+    #experience {
+        padding: 60px 5vw;
+    }
+
+    /* Stack vertically on mobile */
+    .experience-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .experience-image {
+        margin-top: 20px;
+    }
+
+    .company-logo {
+        max-width: 80px; /* Adjust for mobile */
+    }
     nav {
         padding: 10px 16px;
     }
@@ -319,19 +375,23 @@ button:hover {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 60px 6vw;
     }
 
-    .home-text,
-    .home-photo {
+    .home-text, .home-photo {
         max-width: 100%;
-        flex: unset;
+    }
+
+    .home-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
     }
 
     .home-photo img {
-        width: 180px;
-        height: 180px;
-        margin-top: 20px;
+        width: 200px;
+        height: 200px;
     }
 
     h2 {
@@ -357,12 +417,66 @@ button:hover {
     section ul {
         padding-left: 1rem;
     }
+    .menu-toggle {
+        display: block;
+    }
+
+    .NavBar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        display: none;
+        margin-top: 10px;
+        background-color: var(--nav-bg);
+        padding: 10px 0;
+        border-top: 1px solid var(--accent-color);
+        width: 100%;
+    }
+
+    .NavBar.show {
+        display: flex;
+    }
+
+    .profile {
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
+    #experience {
+        padding: 40px 3vw; /* Reduced padding for smaller screens */
+    }
+
+    .experience-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .experience-image {
+        margin-top: 15px;
+    }
+
+    .company-logo {
+        max-width: 60px; /* Further reduce logo size */
+    }
+
+    .home-photo {
+        justify-content: center;
+    }
+
     .home-photo img {
-        width: 140px;
-        height: 140px;
+        width: 160px;
+        height: 160px;
+    }
+
+    .home-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .home-text div {
+        font-size: 0.95rem;
     }
 
     h2 {
