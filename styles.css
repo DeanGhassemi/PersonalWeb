@@ -459,7 +459,7 @@ button:hover {
     }
 
     .company-logo {
-        max-width: 60px; /* Further reduce logo size */
+        max-width: 100px; /* Further reduce logo size */
     }
 
     .home-photo {
