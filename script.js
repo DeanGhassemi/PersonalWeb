@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
 });
 
-const menuToggle = document.querySelector('.menu-toggle');
-const navBar = document.querySelector('.NavBar');
-menuToggle.addEventListener('click', () => {
-    navBar.classList.toggle('show');
+const btn  = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.NavBar');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('show');
 });

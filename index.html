@@ -12,6 +12,9 @@
     <nav>
         <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
         <ul class="NavBar">
+            <li>  <button id="theme-toggle" aria-label="Toggle theme">
+                🌙
+              </button> </li>
             <li><a class="active" href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -40,7 +43,7 @@
             <div><i>Built with purely HTML, CSS, and JavaScript.</i></div>
         </div>
         <div class="home-photo">
-            <img src="./assets/images/me-again.jpg" alt="Dean Ghassemi" width="100">
+                <img src="./assets/images/me-again.jpg" alt="Dean Ghassemi">
         </div>
     </section>
     
@@ -57,7 +60,7 @@
             I am passionate about self-improvement. Whether that is in a video game like Overwatch 
             (Peak Rank: Masters 2) or Valorant (Peak Rank: Diamond 1), my skincare, my fragrance, finances, fashion, etc!
         </p>
-        <p>A little fun fact: I enjoy watching my childhood show: Lego Ninjago (Still going!!)</p>
+        <p>A little fun fact: I enjoy watching my childhood show, Lego Ninjago (Still going!! somehow lol)</p>
     </section>
     <section id="skills">
         <h2>My Strengths</h2>
@@ -68,9 +71,9 @@
             <div>
                 As a Web Front-End Dev, my best are
                 <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
+                    <li>SvelteKit</li>
+                    <li>Next.JS</li>
+                    <li>TailwindCSS</li>
                 </ul>
             </div>
             <div>As for soft skills, my top three are
@@ -81,13 +84,11 @@
                     <li>Teamwork</li>
                 </ul>
             </div>
-            <div>Leadership can take many forms. For me, it is about presentating my ideas, stepping up to lead, 
-                and active listening and participation.</div>
+            <div>Leadership can take many forms. For me, it is about presentating my ideas, stepping up to lead, active listening and participation.</div>
         </div>
     </section>
     <section id="experience">
         <h2>Experience</h2>
-    
         <!-- RBC Experience -->
         <div class="experience-item">
             <div class="experience-text">
@@ -95,14 +96,17 @@
                 <div>Toronto, ON (January 2025 - Present)</div>
                 <div>
                     <ul>
-                        <li>Create short and easy to understand 1 to 2 minute videos on accessibility guidelines and test cases.</li>
-                        <li>Improve and develop new features for internal applications regarding accessibility.</li>
+                        <li>Create short and easy to understand 1 to 2 minute videos on accessibility guidelines and test cases</li>
+                        <li>Improve and develop new features for internal applications regarding accessibility</li>
+                        <li>Participated and presented in the DevOps Student Showcase</li>
+                        <li>Achieved Top 3 Placement in the RBC Study Case Competition</li>
                     </ul>
                 </div>
             </div>
             <div class="experience-image">
                 <img src="./assets/images/RBC_Logo.png" alt="RBC Corporate Logo" class="company-logo">
             </div>
+
         </div>
     
         <!-- Skill Squirrel Experience -->
@@ -144,9 +148,9 @@
     
     <section id="projects">
         <h2>Projects</h2>
-        <div>Flirt & Learn (LoveAscend)</div>
-        <div><i>Front-End Developer for Hackville 2024 (Bootstrap, SvelteKit, Flask, MongoDB, OpenAI)</i></div>
-        <div><i>Full-Stack Developer for Capstone Project (SvelteKit, TailwindCSS, GSAP, OpenAI, Clerk)</i></div>
+        <div>Flirt & Learn/LoveAscend</div>
+        <div><i>Front-End Developer for Hackville 2024 <a href="https://github.com/DavidHTwastaken/Hackville2024">[Flirt & Learn]</a> (SvelteKit, Bootstrap, Flask, MongoDB, OpenAI)</i></div>
+        <div><i>Full-Stack Developer for Capstone Project <a href="https://github.com/khoi-130/postgres-sveltekit">[LoveAscend]</a> (SvelteKit, TailwindCSS, GSAP, OpenAI, Clerk, PostgreSQL)</i></div>
         <div>
             <ul>
                 <li>Developed a scable full-stack application that earned 1st Place at Hackville 2024</li>
@@ -155,7 +159,7 @@
                 <li>Added animations, user customization, and user interactivity</li>
             </ul>
         </div>
-        <div>K-Pop Recognition</div>
+        <div><a href="https://github.com/DeanGhassemi/K-pop-Recognition">K-Pop Recognition</a></div>
         <div>Side Project (Bootstrap, Flask, OpenCV, Face-Recognition)</div>
         <div>
             <ul>
@@ -180,16 +184,6 @@
                 <li>Main Support for the Sheridan Bruins Overwatch 2 Team 2024</li>
             </ul>
         </div>
-        <div>University of Toronto</div>
-        <div>Bachelors of Arts - Computer Science</div>
-        <div>September 2020 - August 2021</div>
-        <div>
-            <ul>
-                <li>Completed Calculus 1, Calculus 2, Computer Science Introductory Courses 1 and 2, Introduction to Mathematical Proofs
-                </li>
-                <li>I faced challenges with POSt but remained committed to my passion for computer science, which led me to continue my studies at Sheridan College.</li>
-            </ul>
-        </div>
         <div>Lorne Park Secondary School</div>
         <div>Ontario Scholar Award</div>
         <div>September 2016 - June 2020</div>
@@ -202,5 +196,24 @@
             </ul>
         </div>
     </section>
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+      
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') {
+          root.classList.add('light-mode');
+          toggle.textContent = '🌙'; 
+        } else {
+          toggle.textContent = '☀️';
+        }
+      
+        toggle.addEventListener('click', () => {
+          const isLight = root.classList.toggle('light-mode');
+          toggle.textContent = isLight ? '🌙' : '☀️';
+          localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+      </script>
+      
 </body>
 </html>

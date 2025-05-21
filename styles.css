@@ -6,7 +6,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     scroll-behavior: smooth;
 }
-
+  
 /* Theme Colors */
 :root {
     --primary-color: #c2fbd7;
@@ -18,10 +18,34 @@
     --nav-bg: #1a1a1a;
     --shadow: rgba(0, 255, 128, 0.15);
 }
-
+.light-mode {
+    --primary-color: #0066cc;
+    --accent-color: #004a99;
+    --hover-color: #005bb5;
+    --text-color: #1a1a1a;
+    --background: #f9f9f9;
+    --section-bg: #ffffff;
+    --nav-bg: #e0e0e0;
+    --shadow: rgba(0, 0, 0, 0.1);
+  }
+#theme-toggle{
+    background-color: transparent;
+}
+#theme-toggle:hover{
+    background-color: var(--hover-color);
+    color: #000;
+}
 html {
-    scroll-snap-type: y mandatory;
-    height: 100%;
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 70px;
+  }
+html, body { 
+    overscroll-behavior-y: none; 
+    height: auto;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: var(--background);
 }
 
 body {
@@ -93,8 +117,8 @@ nav {
 /* Fullscreen Sections */
 section {
     min-height: 100vh;
-    width: 100vw;
-    padding: 80px 10vw;
+    width: 100%;
+    padding: 60px 8vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,7 +135,10 @@ section.visible {
     opacity: 1;
     transform: translateY(0);
 }
-
+.menu-toggle { display: block; }
+.NavBar     { display: none; }
+.NavBar.show { display: flex; }
+    
 /* Section Headings */
 h2 {
     color: var(--accent-color);
@@ -282,26 +309,12 @@ button:hover {
 }
 
 .company-logo {
-    max-width: 300px; /* Adjust size */
+    max-width: 300px;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
 }
 
-/* Alternating Layout */
-.experience-item:nth-child(odd) {
-    flex-direction: row;
-}
-
-.experience-item:nth-child(even) {
-    flex-direction: row-reverse;
-}
-
-.experience-item:nth-child(even) .experience-text {
-    text-align: right;
-}
-
-/* Hamburger button (hidden by default) */
 .menu-toggle {
     display: none;
     font-size: 1.8rem;
@@ -310,185 +323,98 @@ button:hover {
     color: var(--primary-color);
     cursor: pointer;
 }
-/* ... Keep everything before here exactly as-is ... */
-
-/* Responsive Enhancements */
-@media (max-width: 1024px) {
-    section {
-        padding: 60px 6vw;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    section p,
-    section div,
-    section ul,
-    section li {
-        font-size: 0.95rem;
-    }
-
-    .NavBar {
-        gap: 16px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    #experience {
-        padding: 60px 5vw;
-    }
-
-    /* Stack vertically on mobile */
-    .experience-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .experience-image {
-        margin-top: 20px;
-    }
-
-    .company-logo {
-        max-width: 80px; /* Adjust for mobile */
-    }
-    nav {
-        padding: 10px 16px;
-    }
-
-    .NavBar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .profile {
-        margin-left: 0;
-        flex-direction: row;
-        gap: 10px;
-        justify-content: flex-start;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .home {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .home-text, .home-photo {
-        max-width: 100%;
-    }
-
-    .home-photo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        width: 100%;
-    }
-
-    .home-photo img {
-        width: 200px;
-        height: 200px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-        padding-left: 0;
-        border-left: none;
-    }
-
-    .h2-indent {
-        padding-left: 1rem;
-    }
-
-    section p,
-    section div,
-    section ul,
-    section li {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        padding-left: 1rem;
-        text-indent: 0;
-    }
-
-    section ul {
-        padding-left: 1rem;
-    }
-    .menu-toggle {
-        display: block;
-    }
-
-    .NavBar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        display: none;
-        margin-top: 10px;
-        background-color: var(--nav-bg);
-        padding: 10px 0;
-        border-top: 1px solid var(--accent-color);
-        width: 100%;
-    }
-
-    .NavBar.show {
-        display: flex;
-    }
-
-    .profile {
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    #experience {
-        padding: 40px 3vw; /* Reduced padding for smaller screens */
-    }
-
-    .experience-item {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .experience-image {
-        margin-top: 15px;
-    }
-
-    .company-logo {
-        max-width: 100px; /* Further reduce logo size */
-    }
-
-    .home-photo {
-        justify-content: center;
-    }
-
-    .home-photo img {
-        width: 160px;
-        height: 160px;
-    }
-
-    .home-text h2 {
-        font-size: 1.5rem;
-    }
-
-    .home-text div {
-        font-size: 0.95rem;
-    }
-
-    h2 {
-        font-size: 1.3rem;
-    }
-
+/* ─── Mobile-first base (up to 479px) ─── */
+.menu-toggle {
+    display: block;
+  }
+  .NavBar {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .NavBar.show {
+    display: flex;
+  }
+  
+  /* ─── ≥ 480px ─── */
+  @media (min-width: 480px) {
+    /* Slightly larger tappable areas */
     .NavBar a {
-        padding: 4px 8px;
-        font-size: 0.9rem;
+      padding: 8px 12px;
     }
-
-    .profile-text .title {
-        font-size: 0.75rem;
+    /* Leaner section padding */
+    section {
+      padding: 60px 8vw;
     }
-}
+    /* Smaller home image on larger phones */
+    .home-photo img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  
+  /* ─── ≥ 768px (tablets) ─── */
+  @media (min-width: 768px) {
+    /* Show full nav, hide hamburger */
+    .menu-toggle {
+      display: none;
+    }
+    .NavBar {
+      display: flex !important;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+    }
+  
+    /* Restore your desktop nav padding */
+    nav {
+      padding: 12px 20px;
+    }
+  
+    /* Sections at full desktop padding */
+    section {
+      padding: 80px 10vw;
+    }
+  
+    /* Headings */
+    h2 {
+      font-size: 2rem;
+      padding-left: 2rem;
+    }
+  
+    /* Home layout side-by-side */
+    .home {
+      flex-direction: row;
+      gap: 40px;
+    }
+    .home-photo img {
+      width: 300px;
+      height: 300px;
+    }
+  
+    /* Experience section */
+    #experience {
+      padding: 60px 10vw;
+    }
+    .experience-item {
+      flex-direction: row;
+    }
+    .company-logo {
+      max-width: 300px;
+    }
+  }
+  
+  /* ─── ≥ 1024px (desktops) ─── */
+  @media (min-width: 1024px) {
+    section {
+      padding: 100px 12vw;
+    }
+    .home-photo img {
+      width: 350px;
+      height: 350px;
+    }
+    .company-logo {
+      max-width: 350px;
+    }
+  }
+  
