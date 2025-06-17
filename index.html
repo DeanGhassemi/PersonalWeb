@@ -12,10 +12,10 @@
     <nav>
         <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
         <ul class="NavBar">
-            <li>  <button id="theme-toggle" aria-label="Toggle theme">
+            <li> <a id="theme-toggle" aria-label="Toggle theme">
                 🌙
-              </button> </li>
-            <li><a class="active" href="#home">Home</a></li>
+            </a> </li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
@@ -196,6 +196,25 @@
             </ul>
         </div>
     </section>
+    <section id="contact">
+        <h2>Let's Get in Touch!</h2>
+        <p>Want to connect? Reach out through any of the links below or send me a message.</p>
+      
+        <div class="contact-links">
+          <a href="mailto:deanghassemi@gmail.com">📧 Email Me</a>
+          <a href="https://linkedin.com/in/dean-ghassemi" target="_blank">💼 LinkedIn</a>
+          <a href="https://github.com/DeanGhassemi" target="_blank">💻 GitHub</a>
+        </div>
+      
+        <!-- Optional contact form -->
+        <form class="contact-form" action="mailto:deanghassemi@gmail.com" method="POST" enctype="text/plain">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+      
     <script>
         const toggle = document.getElementById('theme-toggle');
         const root = document.documentElement;
